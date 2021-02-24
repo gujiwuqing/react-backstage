@@ -1,14 +1,27 @@
 import React from 'react';
+import './index.less';
+import BaseNav from './BaseNav';
+import BaseHeader from './BaseHeader';
+import { Layout } from 'antd';
 
-import BaseNav from './components/BaseNav';
-
+const { Content } = Layout;
 export default function index({ children }: any) {
   return (
-    <div className='container'>
-      <div>
-        <BaseNav />
-      </div>
-      <div>{children}</div>
-    </div>
+    <Layout className="container">
+      <BaseNav />
+      <Layout className="site-layout">
+        <BaseHeader />
+        <Content
+          className="site-layout-background"
+          style={{
+            margin: '24px 16px',
+            padding: 24,
+            minHeight: 280,
+          }}
+        >
+          {children}
+        </Content>
+      </Layout>
+    </Layout>
   );
 }
