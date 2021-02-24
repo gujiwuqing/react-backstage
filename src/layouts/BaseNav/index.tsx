@@ -28,7 +28,7 @@ export default function Index() {
             goPage('/');
           }}
         >
-          Option 1
+          首页
         </Menu.Item>
         <Menu.Item
           key="2"
@@ -42,8 +42,6 @@ export default function Index() {
         <SubMenu key="sub1" icon={<PieChartOutlined />} title="Excel">
           <Menu.Item key="5">导出Excel</Menu.Item>
           <Menu.Item key="6">导入Excel</Menu.Item>
-          <Menu.Item key="7">Option 7</Menu.Item>
-          <Menu.Item key="8">Option 8</Menu.Item>
         </SubMenu>
       </Menu>
     </Sider>
