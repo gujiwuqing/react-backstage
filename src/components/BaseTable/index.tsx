@@ -2,6 +2,7 @@ import React, { useState, ReactNode } from 'react';
 import ProTable, { ProTableProps } from '@ant-design/pro-table';
 import { ParamsType } from '@ant-design/pro-provider';
 import { Button, Input } from 'antd';
+import './index.less';
 interface BaseTableProps<T, U extends ParamsType> extends ProTableProps<T, U> {
   inputPlachoderText?: string;
   renderActions?: () => ReactNode;
@@ -16,6 +17,7 @@ export function BaseTable<T, U extends ParamsType>({
     <>
       <ProTable<T, U>
         search={false}
+        rowKey="id"
         toolbar={{
           search: renderActions && renderActions(),
           actions: [
@@ -36,7 +38,7 @@ export function BaseTable<T, U extends ParamsType>({
             </>,
           ],
         }}
-        pagination={{ pageSize: 10 }}
+        pagination={{ pageSize: 10, showQuickJumper: true }}
         {...reset}
       />
     </>

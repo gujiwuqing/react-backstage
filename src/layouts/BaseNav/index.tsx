@@ -34,10 +34,10 @@ export default function Index() {
           key="2"
           icon={<DesktopOutlined />}
           onClick={() => {
-            goPage('/test');
+            goPage('/user');
           }}
         >
-          Option 2
+          用户管理
         </Menu.Item>
         <SubMenu key="sub1" icon={<PieChartOutlined />} title="Excel">
           <Menu.Item key="5">导出Excel</Menu.Item>

@@ -4,12 +4,12 @@ const routes = [
     title: '首页',
     component: '@/layouts',
     routes: [
-        {
-        path: '/test',
-        title: 'test',
-        component: '@/pages/test',
-    }
-],
+      {
+        path: '/user',
+        title: '用户管理',
+        component: '@/pages/user',
+      },
+    ],
   },
 ];
 

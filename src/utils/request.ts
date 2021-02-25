@@ -3,7 +3,7 @@ import { extend } from 'umi-request';
 const request = extend({
   prefix:
     'https://www.fastmock.site/mock/85c752f2a572df1e979659e4912eefd4/backstage',
-  timeout: 1000,
+  timeout: 15000,
   //   headers: {
   //     'Content-Type': 'multipart/form-data',
   //   },
@@ -30,3 +30,5 @@ request.use(async (ctx, next) => {
     // 对异常情况做对应处理
   }
 });
+
+export default request;
