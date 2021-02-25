@@ -25,6 +25,8 @@
     "@ant-design/pro-table": "^2.30.0",
     "@umijs/preset-react": "1.x",
     "antd": "^4.12.3",
+    "array-move": "^3.0.1",
+    "react-sortable-hoc": "^1.11.0",
     "screenfull": "^5.1.0",
     "umi": "^3.3.7",
     "xlsx": "^0.16.9"

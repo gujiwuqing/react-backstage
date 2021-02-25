@@ -39,6 +39,17 @@ export default function Index() {
         >
           用户管理
         </Menu.Item>
+        <SubMenu key="sub2" icon={<PieChartOutlined />} title="拖拽">
+          <Menu.Item
+            key="51"
+            onClick={() => {
+              goPage('/trag');
+            }}
+          >
+            拖拽1
+          </Menu.Item>
+          <Menu.Item key="61">导入Excel</Menu.Item>
+        </SubMenu>
         <SubMenu key="sub1" icon={<PieChartOutlined />} title="Excel">
           <Menu.Item key="5">导出Excel</Menu.Item>
           <Menu.Item key="6">导入Excel</Menu.Item>
