@@ -1,5 +1,5 @@
 import request from '../../utils/request';
-
+import { userDTO } from './type';
 export function getUserList(data?: any) {
   return request('/user/list', {
     method: 'POST',
@@ -7,7 +7,7 @@ export function getUserList(data?: any) {
   });
 }
 
-export function addUser(data: any) {
+export function addUser(data: userDTO) {
   return request('/user/add', {
     method: 'POST',
     data,

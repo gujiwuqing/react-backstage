@@ -5,6 +5,11 @@ const routes = [
     component: '@/layouts',
     routes: [
       {
+        path: '/',
+        title: '首页',
+        component: '@/pages/home',
+      },
+      {
         path: '/user',
         title: '用户管理',
         component: '@/pages/user',
@@ -13,6 +18,11 @@ const routes = [
         path: '/trag',
         title: '用户管理',
         component: '@/pages/trag/hoc',
+      },
+      {
+        path: '/excel',
+        title: '导出excel',
+        component: '@/pages/excel',
       },
     ],
   },

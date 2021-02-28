@@ -1,10 +1,10 @@
 import BaseModalForm from '@/components/BaseModalForm';
 import { PlusOutlined } from '@ant-design/icons';
 import { ProFormText } from '@ant-design/pro-form';
-import { Button, message } from 'antd';
+import { Button, message, Form, Cascader } from 'antd';
 import React from 'react';
 import { addUser } from '@/services/user';
-
+import options from '@/utils/cascader-address-options';
 interface createUserProps {
   reloadTable: () => void;
 }
@@ -30,19 +30,21 @@ export default function createUser({ reloadTable }: createUserProps) {
       }}
     >
       <ProFormText
-        width="md"
         name="name"
         label="姓名"
         placeholder="请输入姓名"
         rules={[{ required: true }]}
       />
       <ProFormText
-        width="md"
         name="age"
         label="年龄"
         placeholder="请输入年龄"
         rules={[{ required: true }]}
       />
+      <Form.Item label="地址" name="address">
+        <Cascader options={options}></Cascader>
+      </Form.Item>
+      <ProFormText name="email" label="邮箱" placeholder="请输入邮箱" />
     </BaseModalForm>
   );
 }

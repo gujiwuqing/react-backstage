@@ -25,9 +25,11 @@ const items = [
 const index = () => {
   const [list, setList] = useState(items);
   const onSortEnd = ({ oldIndex, newIndex }: any) => {
+    console.log(oldIndex, newIndex);
+    let newList = arrayMove(items, oldIndex, newIndex);
+    console.log('newList', newList);
     setList([...arrayMove(items, oldIndex, newIndex)]);
-    console.log(arrayMove(items, oldIndex, newIndex));
   };
-  return <SortableList items={list} onSortEnd={onSortEnd} axis={'x'} />;
+  return <SortableList items={list} onSortEnd={onSortEnd} axis={'xy'} />;
 };
 export default index;

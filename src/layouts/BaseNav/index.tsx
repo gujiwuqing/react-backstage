@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
-import { PieChartOutlined, DesktopOutlined } from '@ant-design/icons';
-import { Menu, Layout } from 'antd';
+import {
+  HomeOutlined,
+  UserOutlined,
+  FileExcelOutlined,
+} from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+import React from 'react';
 import { history, useModel } from 'umi';
 
 const { SubMenu } = Menu;
@@ -13,6 +17,7 @@ export default function Index() {
   const goPage = (path: string) => {
     history.push(path);
   };
+
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
       <Menu
@@ -22,8 +27,8 @@ export default function Index() {
         style={{ height: '100vh' }}
       >
         <Menu.Item
-          key="1"
-          icon={<PieChartOutlined />}
+          key="/"
+          icon={<HomeOutlined />}
           onClick={() => {
             goPage('/');
           }}
@@ -32,14 +37,14 @@ export default function Index() {
         </Menu.Item>
         <Menu.Item
           key="2"
-          icon={<DesktopOutlined />}
+          icon={<UserOutlined />}
           onClick={() => {
             goPage('/user');
           }}
         >
           用户管理
         </Menu.Item>
-        <SubMenu key="sub2" icon={<PieChartOutlined />} title="拖拽">
+        <SubMenu key="sub2" icon={<HomeOutlined />} title="拖拽">
           <Menu.Item
             key="51"
             onClick={() => {
@@ -50,8 +55,15 @@ export default function Index() {
           </Menu.Item>
           <Menu.Item key="61">导入Excel</Menu.Item>
         </SubMenu>
-        <SubMenu key="sub1" icon={<PieChartOutlined />} title="Excel">
-          <Menu.Item key="5">导出Excel</Menu.Item>
+        <SubMenu key="sub1" icon={<FileExcelOutlined />} title="Excel">
+          <Menu.Item
+            key="5"
+            onClick={() => {
+              goPage('/excel');
+            }}
+          >
+            导出Excel
+          </Menu.Item>
           <Menu.Item key="6">导入Excel</Menu.Item>
         </SubMenu>
       </Menu>
