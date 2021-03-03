@@ -20,9 +20,24 @@ const routes = [
         component: '@/pages/trag/hoc',
       },
       {
+        path: '/trag/dnd',
+        title: '用户管理',
+        component: '@/pages/trag/dnd',
+      },
+      {
         path: '/excel',
         title: '导出excel',
         component: '@/pages/excel',
+      },
+      {
+        path: '/test',
+        title: '测试',
+        component: '@/pages/test',
+      },
+      {
+        path: '/upload',
+        title: '测试',
+        component: '@/pages/upload',
       },
     ],
   },

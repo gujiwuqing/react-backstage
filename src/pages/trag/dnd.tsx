@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function hoc() {
+export default function dnd() {
   return <div></div>;
 }

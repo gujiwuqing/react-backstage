@@ -1,51 +1,72 @@
-import React from 'react';
-import { Row, Col } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { Col, Row } from 'antd';
+import React from 'react';
+import LineEcharts from './components/LineEcharts';
 import './index.less';
+const style = {
+  background: '#0092ff',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '8px 16px',
+};
 
-export default function Home() {
+const Home = () => {
   return (
-    <div style={{ width: '100vw' }} className="home-container">
+    <div style={{ width: '100%' }} className="home-container">
       <div className="home-container_header">
-        <Row>
-          <Col span={6}>
-            <div>
-              <UserOutlined />
+        <Row gutter={16}>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>
+              <p>
+                <UserOutlined style={{ fontSize: '36px' }} />
+              </p>
+              <div>
+                <p>New Visits</p>
+                <p>102400</p>
+              </div>
             </div>
-            <div>
-              <p>New Visits</p>
-              <p>16</p>
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>
+              <p>
+                <UserOutlined style={{ fontSize: '36px' }} />
+              </p>
+              <div>
+                <p>Messages</p>
+                <p>102400</p>
+              </div>
             </div>
-          </Col>{' '}
-          <Col span={6}>
-            <div>
-              <UserOutlined />
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>
+              <p>
+                <UserOutlined style={{ fontSize: '36px' }} />
+              </p>
+              <div>
+                <p>Purchases</p>
+                <p>102400</p>
+              </div>
             </div>
-            <div>
-              <p>New Visits</p>
-              <p>16</p>
-            </div>
-          </Col>{' '}
-          <Col span={6}>
-            <div>
-              <UserOutlined />
-            </div>
-            <div>
-              <p>New Visits</p>
-              <p>16</p>
-            </div>
-          </Col>{' '}
-          <Col span={6}>
-            <div>
-              <UserOutlined />
-            </div>
-            <div>
-              <p>New Visits</p>
-              <p>16</p>
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <div style={style}>
+              <p>
+                <UserOutlined style={{ fontSize: '36px' }} />
+              </p>
+              <div>
+                <p>New Visits</p>
+                <p>102400</p>
+              </div>
             </div>
           </Col>
         </Row>
       </div>
+      <div style={{ height: '400px', margin: '40px 0' }}>
+        <LineEcharts />
+      </div>
     </div>
   );
-}
+};
+
+export default Home;
