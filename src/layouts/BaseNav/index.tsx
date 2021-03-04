@@ -4,24 +4,26 @@ import {
   FileExcelOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
 import { history, useModel } from 'umi';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 export default function Index() {
+  const [selectedKey, setSelectedKey] = useState<string>('/');
   const { collapsed } = useModel('menuState', (model) => ({
     collapsed: model.collapsed,
   }));
 
   const goPage = (path: string) => {
     history.push(path);
+    setSelectedKey(path);
   };
 
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
       <Menu
-        defaultSelectedKeys={['1']}
+        selectedKeys={[selectedKey]}
         mode="inline"
         theme="dark"
         style={{ height: '100vh' }}
@@ -36,7 +38,7 @@ export default function Index() {
           首页
         </Menu.Item>
         <Menu.Item
-          key="2"
+          key="/user"
           icon={<UserOutlined />}
           onClick={() => {
             goPage('/user');
@@ -46,7 +48,7 @@ export default function Index() {
         </Menu.Item>
         <SubMenu key="sub2" icon={<HomeOutlined />} title="拖拽">
           <Menu.Item
-            key="51"
+            key="/trag"
             onClick={() => {
               goPage('/trag');
             }}
@@ -57,7 +59,7 @@ export default function Index() {
         </SubMenu>
         <SubMenu key="sub1" icon={<FileExcelOutlined />} title="Excel">
           <Menu.Item
-            key="5"
+            key="/excel"
             onClick={() => {
               goPage('/excel');
             }}

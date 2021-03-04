@@ -11,16 +11,7 @@ export default function index({ children }: any) {
       <BaseNav />
       <Layout className="site-layout">
         <BaseHeader />
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-          }}
-        >
-          {children}
-        </Content>
+        <Content>{children}</Content>
       </Layout>
     </Layout>
   );

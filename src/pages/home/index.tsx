@@ -2,70 +2,73 @@ import { UserOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
 import React from 'react';
 import LineEcharts from './components/LineEcharts';
+import BasePage from '@/components/BasePage';
 import './index.less';
 const style = {
-  background: '#0092ff',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '8px 16px',
+  background: '#fff',
 };
 
 const Home = () => {
   return (
-    <div style={{ width: '100%' }} className="home-container">
-      <div className="home-container_header">
-        <Row gutter={16}>
-          <Col className="gutter-row" span={6}>
-            <div style={style}>
-              <p>
-                <UserOutlined style={{ fontSize: '36px' }} />
-              </p>
-              <div>
-                <p>New Visits</p>
-                <p>102400</p>
+    <BasePage>
+      <div style={{ width: '100%' }} className="home-container">
+        <div className="home-container_header">
+          <Row gutter={16}>
+            <Col className="gutter-row" span={6}>
+              <div style={style}>
+                <p>
+                  <UserOutlined style={{ fontSize: '36px' }} />
+                </p>
+                <div>
+                  <p>New Visits</p>
+                  <p>102400</p>
+                </div>
               </div>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div style={style}>
-              <p>
-                <UserOutlined style={{ fontSize: '36px' }} />
-              </p>
-              <div>
-                <p>Messages</p>
-                <p>102400</p>
+            </Col>
+            <Col className="gutter-row" span={6}>
+              <div style={style}>
+                <p>
+                  <UserOutlined style={{ fontSize: '36px' }} />
+                </p>
+                <div>
+                  <p>Messages</p>
+                  <p>102400</p>
+                </div>
               </div>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div style={style}>
-              <p>
-                <UserOutlined style={{ fontSize: '36px' }} />
-              </p>
-              <div>
-                <p>Purchases</p>
-                <p>102400</p>
+            </Col>
+            <Col className="gutter-row" span={6}>
+              <div style={style}>
+                <p>
+                  <UserOutlined style={{ fontSize: '36px' }} />
+                </p>
+                <div>
+                  <p>Purchases</p>
+                  <p>102400</p>
+                </div>
               </div>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div style={style}>
-              <p>
-                <UserOutlined style={{ fontSize: '36px' }} />
-              </p>
-              <div>
-                <p>New Visits</p>
-                <p>102400</p>
+            </Col>
+            <Col className="gutter-row" span={6}>
+              <div style={style}>
+                <p>
+                  <UserOutlined style={{ fontSize: '36px' }} />
+                </p>
+                <div>
+                  <p>New Visits</p>
+                  <p>102400</p>
+                </div>
               </div>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </div>
+        <div className="line-echarts">
+          <LineEcharts />
+        </div>
       </div>
-      <div style={{ height: '400px', margin: '40px 0' }}>
-        <LineEcharts />
-      </div>
-    </div>
+    </BasePage>
   );
 };
 
