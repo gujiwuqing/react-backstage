@@ -3,7 +3,7 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import FullScreen from '@/components/FullScreen';
 import { useModel } from 'umi';
 import { Layout } from 'antd';
-
+import UserInfo from '../UserInfo';
 const { Header } = Layout;
 export default function Index() {
   const { collapsed, toggleCollapsed, toggleFalseCollapsed } = useModel(
@@ -22,6 +22,7 @@ export default function Index() {
       })}
       <div>
         <FullScreen />
+        <UserInfo />
       </div>
     </Header>
   );

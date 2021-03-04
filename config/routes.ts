@@ -1,7 +1,13 @@
 const routes = [
   {
+    path: '/login',
+    title: '登录',
+    component: '@/pages/login',
+  },
+  {
     path: '/',
     title: '首页',
+    exact: false,
     component: '@/layouts',
     routes: [
       {
@@ -10,19 +16,20 @@ const routes = [
         component: '@/pages/home',
       },
       {
-        path: '/user',
-        title: '用户管理',
-        component: '@/pages/user',
+        path: '/table',
+        title: '表格',
+        routes: [
+          {
+            path: '/table/user/list',
+            title: '用户管理',
+            component: '@/pages/user',
+          },
+        ],
       },
       {
         path: '/trag',
-        title: '用户管理',
+        title: '拖拽',
         component: '@/pages/trag/hoc',
-      },
-      {
-        path: '/trag/dnd',
-        title: '用户管理',
-        component: '@/pages/trag/dnd',
       },
       {
         path: '/excel',
@@ -33,11 +40,6 @@ const routes = [
         path: '/test',
         title: '测试',
         component: '@/pages/test',
-      },
-      {
-        path: '/upload',
-        title: '测试',
-        component: '@/pages/upload',
       },
     ],
   },

@@ -1,12 +1,7 @@
-import {
-  HomeOutlined,
-  UserOutlined,
-  FileExcelOutlined,
-} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import { history, useModel } from 'umi';
-
+import routes from '../../../config/routes';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 export default function Index() {
@@ -14,26 +9,55 @@ export default function Index() {
   const { collapsed } = useModel('menuState', (model) => ({
     collapsed: model.collapsed,
   }));
-
   const { tabList, changedTabList } = useModel('tab-list', (model) => ({
     tabList: model.tabList,
     changedTabList: model.changedTabList,
   }));
-  const goPage = (path: string) => {
-    history.push(path);
-    setSelectedKey(path);
-    changedTabList(path);
+  const goPage = (route: any) => {
+    history.push(route.path);
+    changedTabList(route);
   };
 
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
       <Menu
-        selectedKeys={[selectedKey]}
+        selectedKeys={[history.location.pathname]}
         mode="inline"
         theme="dark"
         style={{ height: '100vh' }}
       >
-        <Menu.Item
+        {routes[1].routes.map((item) => {
+          if (item.routes) {
+            return (
+              <SubMenu key={item.path} title={item.title}>
+                {item.routes.map((i) => {
+                  return (
+                    <Menu.Item
+                      key={i.path}
+                      onClick={() => {
+                        goPage(i);
+                      }}
+                    >
+                      {i.title}
+                    </Menu.Item>
+                  );
+                })}
+              </SubMenu>
+            );
+          } else {
+            return (
+              <Menu.Item
+                key={item.path}
+                onClick={() => {
+                  goPage(item);
+                }}
+              >
+                {item.title}
+              </Menu.Item>
+            );
+          }
+        })}
+        {/* <Menu.Item
           key="/"
           icon={<HomeOutlined />}
           onClick={() => {
@@ -72,7 +96,7 @@ export default function Index() {
             导出Excel
           </Menu.Item>
           <Menu.Item key="6">导入Excel</Menu.Item>
-        </SubMenu>
+        </SubMenu> */}
       </Menu>
     </Sider>
   );
