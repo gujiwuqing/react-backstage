@@ -15,9 +15,14 @@ export default function Index() {
     collapsed: model.collapsed,
   }));
 
+  const { tabList, changedTabList } = useModel('tab-list', (model) => ({
+    tabList: model.tabList,
+    changedTabList: model.changedTabList,
+  }));
   const goPage = (path: string) => {
     history.push(path);
     setSelectedKey(path);
+    changedTabList(path);
   };
 
   return (
