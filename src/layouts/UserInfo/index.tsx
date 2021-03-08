@@ -5,21 +5,24 @@ import React from 'react';
 const menu = (
   <Menu>
     <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
+      <a target="_blank" rel="noopener noreferrer">
         个人中心
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer">
+        修改密码
       </a>
     </Menu.Item>
     <Menu.Item>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="http://www.taobao.com/"
+        onClick={() => {
+          console.log('1234');
+        }}
       >
-        首页
+        退出登录
       </a>
     </Menu.Item>
   </Menu>

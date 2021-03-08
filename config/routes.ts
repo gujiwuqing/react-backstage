@@ -41,6 +41,11 @@ const routes = [
         title: '测试',
         component: '@/pages/test',
       },
+      {
+        path: '/upload',
+        title: '上传',
+        component: '@/pages/upload',
+      },
     ],
   },
 ];
