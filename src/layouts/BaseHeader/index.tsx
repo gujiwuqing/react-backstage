@@ -3,7 +3,8 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import FullScreen from '@/components/FullScreen';
 import { useModel } from 'umi';
 import { Layout } from 'antd';
-import UserInfo from '../UserInfo';
+import UserInfo from './AvatarDropdown';
+import './index.less';
 const { Header } = Layout;
 export default function Index() {
   const { collapsed, toggleCollapsed, toggleFalseCollapsed } = useModel(
@@ -20,7 +21,7 @@ export default function Index() {
         className: 'trigger',
         onClick: collapsed ? toggleFalseCollapsed : toggleCollapsed,
       })}
-      <div>
+      <div className="header-right">
         <FullScreen />
         <UserInfo />
       </div>

@@ -16,6 +16,7 @@ const FullScreen = () => {
     <>
       {isFullscreen ? (
         <FullscreenExitOutlined
+          style={{ fontSize: '24px', marginRight: '20px' }}
           title="全屏"
           onClick={() => {
             changedFullscreen();
@@ -24,6 +25,7 @@ const FullScreen = () => {
         />
       ) : (
         <FullscreenOutlined
+          style={{ fontSize: '24px', marginRight: '20px' }}
           title="取消全屏"
           onClick={() => {
             changedFullscreen();

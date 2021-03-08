@@ -1,6 +1,8 @@
-import { Button, Checkbox, Form, Input } from 'antd';
-import React from 'react';
+import { Button, Checkbox, Form, Input, message } from 'antd';
+import React, { useEffect } from 'react';
 import './index.less';
+
+import { history } from 'umi';
 const layout = {
   labelCol: {
     span: 6,
@@ -17,12 +19,23 @@ const tailLayout = {
 };
 
 const LoginPage = () => {
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
+  const [form] = Form.useForm();
+  let loginUser = localStorage.getItem('loginUser');
+  useEffect(() => {
+    if (loginUser) {
+      form.setFieldsValue({ ...JSON.parse(loginUser) });
+    }
+  }, []);
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinish = (values: any) => {
+    const { username, password, remember } = values;
+    if (remember) {
+      localStorage.setItem('loginUser', JSON.stringify({ username, password }));
+    } else {
+      localStorage.setItem('loginUser', '');
+    }
+    message.success('登录成功');
+    history.push('/');
   };
 
   return (
@@ -42,15 +55,15 @@ const LoginPage = () => {
           remember: true,
         }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
+        form={form}
       >
         <Form.Item
-          label="Username"
+          label="账号"
           name="username"
           rules={[
             {
               required: true,
-              message: 'Please input your username!',
+              message: '请先输入账号!',
             },
           ]}
         >
@@ -58,12 +71,12 @@ const LoginPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label="密码"
           name="password"
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: '请先输入密码!',
             },
           ]}
         >
@@ -71,12 +84,12 @@ const LoginPage = () => {
         </Form.Item>
 
         <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>Remember me</Checkbox>
+          <Checkbox>记住我</Checkbox>
         </Form.Item>
 
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
-            Submit
+            登录
           </Button>
         </Form.Item>
       </Form>
