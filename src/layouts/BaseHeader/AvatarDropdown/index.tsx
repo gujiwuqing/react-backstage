@@ -1,9 +1,12 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Avatar, Dropdown, Menu, message, Popconfirm } from 'antd';
+import { Avatar, Dropdown, Menu, message, Popconfirm, Input, Form } from 'antd';
 import React from 'react';
-import { history } from 'umi';
-
+import { history, useModel } from 'umi';
+import BaseModalForm from '@/components/BaseModalForm';
 const AvatarDropdown = () => {
+  const { user } = useModel('user', (model) => ({
+    user: model.user,
+  }));
   const menu = (
     <Menu>
       <Menu.Item>
@@ -12,9 +15,25 @@ const AvatarDropdown = () => {
         </a>
       </Menu.Item>
       <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer">
-          修改密码
-        </a>
+        <BaseModalForm
+          title="修改密码"
+          triggerRender={() => (
+            <a target="_blank" rel="noopener noreferrer">
+              修改密码
+            </a>
+          )}
+        >
+          <Form.Item label="旧密码" name="password">
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="新密码"
+            rules={[{ required: true }]}
+            name="newPassword"
+          >
+            <Input />
+          </Form.Item>
+        </BaseModalForm>
       </Menu.Item>
       <Menu.Item>
         <Popconfirm
@@ -35,7 +54,7 @@ const AvatarDropdown = () => {
 
   let userInfo = { name: '' };
   return (
-    <Dropdown overlay={menu}>
+    <Dropdown overlay={menu} trigger={['click']}>
       {/* <a
         className="ant-dropdown-link"
         onClick={(e) => e.preventDefault()}
@@ -46,7 +65,7 @@ const AvatarDropdown = () => {
       <span>
         <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         <span>
-          {userInfo?.name ? userInfo?.name : '孤寂无情'}
+          {user?.username ? user?.username : '孤寂无情'}
           <DownOutlined />
         </span>
       </span>

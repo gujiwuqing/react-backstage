@@ -1,12 +1,11 @@
 import { extend } from 'umi-request';
-
+import qs from 'qs';
 const request = extend({
-  prefix:
-    'https://www.fastmock.site/mock/85c752f2a572df1e979659e4912eefd4/backstage',
+  prefix: 'http://127.0.0.1:10000',
   timeout: 15000,
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data',
-  //   },
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
   errorHandler: (err) => {
     console.log(err.response.status);
   },

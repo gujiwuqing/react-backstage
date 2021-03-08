@@ -1,16 +1,8 @@
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import React, { useEffect } from 'react';
+import { history, useModel } from 'umi';
 import './index.less';
-
-import { history } from 'umi';
-const layout = {
-  labelCol: {
-    span: 6,
-  },
-  wrapperCol: {
-    span: 12,
-  },
-};
+import { userLogin } from '@/services/login';
 const tailLayout = {
   wrapperCol: {
     offset: 8,
@@ -27,15 +19,28 @@ const LoginPage = () => {
     }
   }, []);
 
-  const onFinish = (values: any) => {
+  const { changedToken, changedUser } = useModel('user', (model) => ({
+    changedToken: model.changedToken,
+    changedUser: model.changedUser,
+  }));
+  const onFinish = async (values: any) => {
     const { username, password, remember } = values;
     if (remember) {
       localStorage.setItem('loginUser', JSON.stringify({ username, password }));
     } else {
       localStorage.setItem('loginUser', '');
     }
-    message.success('登录成功');
-    history.push('/');
+    const { status, msg, body } = await userLogin({ ...values });
+    if (status == 200) {
+      message.success(msg);
+      history.push('/');
+      changedToken(body.token);
+      localStorage.setItem('token', body.token);
+      localStorage.setItem('user', JSON.stringify(body.user));
+      changedUser(body.user);
+    } else {
+      message.error(msg);
+    }
   };
 
   return (
