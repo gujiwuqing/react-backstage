@@ -29,7 +29,7 @@ const routes = [
       {
         path: '/trag',
         title: '拖拽',
-        component: '@/pages/trag/hoc',
+        component: '@/pages/trag',
       },
       {
         path: '/excel',
