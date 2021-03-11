@@ -9,11 +9,13 @@ const { Content } = Layout;
 export default function index({ children }: any) {
   return (
     <Layout className="container">
-      <BaseNav />
+      <BaseHeader />
       <Layout className="site-layout">
-        <BaseHeader />
-        <BaseTab />
-        <Content>{children}</Content>
+        <BaseNav />
+        <Layout>
+          <BaseTab />
+          <Content>{children}</Content>
+        </Layout>
       </Layout>
     </Layout>
   );

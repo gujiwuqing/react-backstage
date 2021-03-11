@@ -38,8 +38,6 @@ const LoginPage = () => {
       localStorage.setItem('token', body.token);
       localStorage.setItem('user', JSON.stringify(body.user));
       changedUser(body.user);
-    } else {
-      message.error(msg);
     }
   };
 

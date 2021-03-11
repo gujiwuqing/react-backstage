@@ -2,6 +2,15 @@ import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import { history, useModel } from 'umi';
 import routes from '../../../config/routes';
+import {
+  AppstoreOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  PieChartOutlined,
+  DesktopOutlined,
+  ContainerOutlined,
+  MailOutlined,
+} from '@ant-design/icons';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 export default function Index() {
@@ -29,7 +38,11 @@ export default function Index() {
         {routes[1].routes.map((item) => {
           if (item.routes) {
             return (
-              <SubMenu key={item.path} title={item.title}>
+              <SubMenu
+                key={item.path}
+                title={item.title}
+                icon={<PieChartOutlined />}
+              >
                 {item.routes.map((i) => {
                   return (
                     <Menu.Item
@@ -51,6 +64,7 @@ export default function Index() {
                 onClick={() => {
                   goPage(item);
                 }}
+                icon={<PieChartOutlined />}
               >
                 {item.title}
               </Menu.Item>

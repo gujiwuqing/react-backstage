@@ -1,38 +1,35 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu';
 
-export default function index() {
-  const [number, setNumber] = useState(0);
-  //   const handerClick1 = () => {
-  //     /* 一些操作 */
-  //   };
-  //   const handerClick2 = () => {
-  //     /* 一些操作 */
-  //   };
-  //   const handerClick3 = () => {
-  //     /* 一些操作 */
-  //   };
-
-  const [handerClick1, handerClick2, handerClick3] = useMemo(() => {
-    const fn1 = () => {
-      /* 一些操作 */
-      console.log('f1');
-    };
-    const fn2 = () => {
-      /* 一些操作 */
-      console.log('f2');
-    };
-    const fn3 = () => {
-      console.log('f3');
-      /* 一些操作 */
-    };
-    return [fn1, fn2, fn3];
-  }, []);
+const MyApp = () => {
+  function handleClick(e, data) {
+    console.log(data.foo);
+  }
   return (
     <div>
-      <a onClick={handerClick1}>点我有惊喜1</a>
-      <a onClick={handerClick2}>点我有惊喜2</a>
-      <a onClick={handerClick3}>点我有惊喜3</a>
-      <button onClick={() => setNumber(number + 1)}> 点击 {number} </button>
+      {/* NOTICE: id must be unique between EVERY <ContextMenuTrigger> and <ContextMenu> pair */}
+      {/* NOTICE: inside the pair, <ContextMenuTrigger> and <ContextMenu> must have the same id */}
+
+      <ContextMenuTrigger id="same_unique_identifier">
+        <div className="well">Right click to see the menu</div>
+      </ContextMenuTrigger>
+
+      <ContextMenu id="same_unique_identifier">
+        <MenuItem data={{ foo: 'bar' }} onClick={handleClick}>
+          ContextMenu Item 1
+        </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={handleClick}>
+          ContextMenu Item 2
+        </MenuItem>
+        <MenuItem divider />
+        <MenuItem data={{ foo: 'bar' }} onClick={handleClick}>
+          ContextMenu Item 3
+        </MenuItem>
+      </ContextMenu>
     </div>
   );
-}
+};
+
+// ReactDOM.render(<MyApp myProp={12}/>, document.getElementById("main"));
+export default MyApp;

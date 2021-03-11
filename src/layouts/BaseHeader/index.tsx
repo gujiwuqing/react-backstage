@@ -16,11 +16,19 @@ export default function Index() {
     }),
   );
   return (
-    <Header className="site-layout-background">
-      {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-        className: 'trigger',
-        onClick: collapsed ? toggleFalseCollapsed : toggleCollapsed,
-      })}
+    <Header className="site-header">
+      <div className="header-left">
+        <div className="collapse-btn">
+          {React.createElement(
+            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: 'trigger',
+              onClick: collapsed ? toggleFalseCollapsed : toggleCollapsed,
+            },
+          )}
+        </div>
+        <span>后台管理系统</span>
+      </div>
       <div className="header-right">
         <FullScreen />
         <UserInfo />
